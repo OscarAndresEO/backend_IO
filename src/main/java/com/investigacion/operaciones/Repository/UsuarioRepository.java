@@ -10,6 +10,7 @@ import com.investigacion.operaciones.Entity.Usuario;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.data.repository.query.Param;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
@@ -38,6 +39,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     public void eliminarUsuario(int id_usuario);
 
 
-    @Query(value = "select * from usuario where nombre=?1 and clave=?2 ", nativeQuery = true)
-    public Optional<Usuario> login(String username, String clave);
+    @Query(value = "select * from usuario where username=:username and clave=:clave ", nativeQuery = true)
+    public Optional<Usuario> login(@Param("username") String username, @Param("clave") String clave);
 }

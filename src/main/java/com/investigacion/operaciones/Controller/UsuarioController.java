@@ -61,7 +61,7 @@ public class UsuarioController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<Optional<Usuario>> login(UsuarioDTO usuario){
+    public ResponseEntity<Optional<Usuario>> login(@RequestBody UsuarioDTO usuario){
         return ResponseEntity.ok(usuarioService.login(usuario));
     }
 }
